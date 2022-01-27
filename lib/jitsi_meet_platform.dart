@@ -5,7 +5,8 @@ import 'package:jitsi_meet_platform/jitsi_options.dart';
 import 'package:jitsi_meet_platform/jitsi_response.dart';
 
 class JitsiMeetPlatform {
-  static const MethodChannel _channel = MethodChannel('jitsi_meet_platform');
+  static const MethodChannel _channel =
+      MethodChannel('turbat/jitsi_meet_platform', JSONMethodCodec());
 
   // static Future<JitsiResponse> joinMeeting(JitsiOptions options,
   //     {JitsiListener? listener,
