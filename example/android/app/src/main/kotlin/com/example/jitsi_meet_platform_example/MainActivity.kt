@@ -1,4 +1,4 @@
-package com.example.jitsi_meet_platform_example
+package com.turbat.jitsi_meet_platform_example
 
 import io.flutter.embedding.android.FlutterActivity
 

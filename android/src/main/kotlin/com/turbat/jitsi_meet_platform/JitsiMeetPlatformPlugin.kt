@@ -1,4 +1,4 @@
-package com.example.jitsi_meet_platform
+package com.turbat.jitsi_meet_platform
 
 import androidx.annotation.NonNull
 
