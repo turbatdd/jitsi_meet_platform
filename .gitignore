@@ -1,11 +1,14 @@
-# See https://www.dartlang.org/guides/libraries/private-files
+.DS_Store
+.DS_Store?
+.idea/
+.vscode/
+**.iml
 
-# Files and directories created by pub
-.dart_tool/
 .packages
-build/
-# If you're building an application, you may want to check-in your pubspec.lock
+.pub/
+.dart_tool/
 pubspec.lock
+flutter_export_environment.sh
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
