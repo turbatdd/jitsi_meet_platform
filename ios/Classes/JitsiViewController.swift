@@ -109,52 +109,95 @@ class JitsiVC: UIViewController {
     }
 }
 
-extension JitsiViewController: JitsiMeetViewDelegate {
-    
+
+extension ViewController: JitsiMeetViewDelegate {
     func conferenceWillJoin(_ data: [AnyHashable : Any]!) {
-        //        print("CONFERENCE WILL JOIN")
-        var mutatedData = data
-        mutatedData?.updateValue("onConferenceWillJoin", forKey: "event")
-        self.eventSink?(mutatedData)
-    }
-    
-    func conferenceJoined(_ data: [AnyHashable : Any]!) {
-        //        print("CONFERENCE JOINED")
-        var mutatedData = data
-        mutatedData?.updateValue("onConferenceJoined", forKey: "event")
-        self.eventSink?(mutatedData)
-    }
-    
-    func conferenceTerminated(_ data: [AnyHashable : Any]!) {
-        //        print("CONFERENCE TERMINATED")
-        var mutatedData = data
-        mutatedData?.updateValue("onConferenceTerminated", forKey: "event")
-        self.eventSink?(mutatedData)
-        
-        DispatchQueue.main.async {
-            // self.pipViewCoordinator?.hide() { _ in
-            //     self.cleanUp()
-            //     self.dismiss(animated: true, completion: nil)
-            // }
+            //        print("CONFERENCE WILL JOIN")
+            var mutatedData = data
+            mutatedData?.updateValue("onConferenceWillJoin", forKey: "event")
+            self.eventSink?(mutatedData)
         }
         
-    }
-    
-    func enterPicture(inPicture data: [AnyHashable : Any]!) {
-        //        print("CONFERENCE PIP IN")
-        var mutatedData = data
-        mutatedData?.updateValue("onPictureInPictureWillEnter", forKey: "event")
-        self.eventSink?(mutatedData)
-        // DispatchQueue.main.async {
-        //     self.pipViewCoordinator?.enterPictureInPicture()
-        // }
-    }
-    
-    func exitPictureInPicture() {
-        //        print("CONFERENCE PIP OUT")
-        var mutatedData : [AnyHashable : Any]
-        mutatedData = ["event":"onPictureInPictureTerminated"]
-        self.eventSink?(mutatedData)
-    }
-}
+        func conferenceJoined(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE JOINED")
+            var mutatedData = data
+            mutatedData?.updateValue("onConferenceJoined", forKey: "event")
+            self.eventSink?(mutatedData)
+        }
+        
+        func conferenceTerminated(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE TERMINATED")
+            var mutatedData = data
+            mutatedData?.updateValue("onConferenceTerminated", forKey: "event")
+            self.eventSink?(mutatedData)
+            
+            DispatchQueue.main.async {
+                self.pipViewCoordinator?.hide() { _ in
+                    self.cleanUp()
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+            
+        }
 
+        func enterPictureInPicture(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE PIP IN")
+            var mutatedData = data
+            mutatedData?.updateValue("onEnterPictureInPicture", forKey: "event")
+            self.eventSink?(mutatedData)
+            DispatchQueue.main.async {
+                self.pipViewCoordinator?.enterPictureInPicture()
+            }
+        }
+
+        func participantJoined(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE PIP IN")
+            var mutatedData = data
+            mutatedData?.updateValue("onParticipantJoined", forKey: "event")
+            self.eventSink?(mutatedData)
+            DispatchQueue.main.async {
+                self.pipViewCoordinator?.participantJoined()
+            }
+        }
+
+        func participantLeft(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE PIP IN")
+            var mutatedData = data
+            mutatedData?.updateValue("onParticipantLeft", forKey: "event")
+            self.eventSink?(mutatedData)
+            DispatchQueue.main.async {
+                self.pipViewCoordinator?.onParticipantLeft()
+            }
+        }
+
+         func audioMutedChanged(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE PIP IN")
+            var mutatedData = data
+            mutatedData?.updateValue("onAudioMutedChanged", forKey: "event")
+            self.eventSink?(mutatedData)
+            DispatchQueue.main.async {
+                self.pipViewCoordinator?.audioMutedChanged()
+            }
+        }
+
+         func endpointTextMessageReceived(_ data: [AnyHashable : Any]!) {
+            //        print("CONFERENCE PIP IN")
+            var mutatedData = data
+            mutatedData?.updateValue("onEndpointTextMessageReceived", forKey: "event")
+            self.eventSink?(mutatedData)
+            DispatchQueue.main.async {
+                self.pipViewCoordinator?.endpointTextMessageReceived()
+            }
+        }
+
+        func exitPictureInPicture() {
+            //        print("CONFERENCE PIP OUT")
+            var mutatedData : [AnyHashable : Any]
+            mutatedData = ["event":"onExitPictureInPicture"]
+            self.eventSink?(mutatedData)
+
+             DispatchQueue.main.async {
+                self.pipViewCoordinator?.exitPictureInPicture()
+            }
+        }
+}
