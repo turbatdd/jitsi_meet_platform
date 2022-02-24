@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:jitsi_meet/interface/jitsi_meet_platform_interface.dart';
+import 'package:jitsi_meet/interface/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 
 void main() => runApp(MyApp());
