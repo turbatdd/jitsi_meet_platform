@@ -1,4 +1,4 @@
-package com.gunschu.example
+package com.turbatdd.example
 
 import io.flutter.embedding.android.FlutterActivity
 

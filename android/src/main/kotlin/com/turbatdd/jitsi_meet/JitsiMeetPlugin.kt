@@ -1,4 +1,4 @@
-package com.gunschu.jitsi_meet
+package com.turbatdd.jitsi_meet
 
 import android.app.Activity
 import android.content.Intent

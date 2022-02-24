@@ -1,4 +1,4 @@
-group 'com.gunschu.jitsi_meet'
+group 'com.turbatdd.jitsi_meet'
 version '1.0-SNAPSHOT'
 
 buildscript {

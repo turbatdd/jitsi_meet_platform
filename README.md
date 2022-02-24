@@ -1,7 +1,5 @@
 # jitsi_meet
 
-#### Support us using our patreon account. https://www.patreon.com/Gunschu
-
 
 Jitsi Meet Plugin for Flutter. Supports Android, iOS, and Web platforms.
 
@@ -110,7 +108,7 @@ and `tools:replace="android:label"` to the application tag.
 Update your minimum sdk version to 23 in android/app/build.gradle
 ```groovy
 defaultConfig {
-    applicationId "com.gunschu.jitsi_meet_example"
+    applicationId "com.turbatdd.jitsi_meet_example"
     minSdkVersion 23 //Required for Jitsi
     targetSdkVersion 28
     versionCode flutterVersionCode.toInteger()
@@ -208,7 +206,7 @@ _joinMeeting() async {
       var options = JitsiMeetingOptions()
         ..room = "myroom" // Required, spaces will be trimmed
         ..serverURL = "https://someHost.com"
-        ..subject = "Meeting with Gunschu"
+        ..subject = "Meeting with turbatdd"
         ..userDisplayName = "My Name"
         ..userEmail = "myemail@email.com"
         ..userAvatarURL = "https://someimageurl.com/image.jpg" // or .png
